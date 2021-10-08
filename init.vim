@@ -18,23 +18,26 @@ Plug 'nvim-telescope/telescope.nvim'
 " Project detector, working great with telescope plugin
 Plug 'ahmedkhalf/project.nvim'
 
-" A Magit clone for Neovim that is geared toward the Vim philosophy.
-Plug 'TimUntersberger/neogit'
-
 " Fast as fuck completion
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
 " 9000+ Snippets
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
+" Insert or delete brackets, parens, quotes in pair.
+Plug 'jiangmiao/auto-pairs'
+
+" Extensions for the built-in Language Server Protocol support
+Plug 'mfussenegger/nvim-jdtls'
+
 call plug#end()
+
+augroup lsp
+    au!
+    au FileType java lua require('lsp-config').start_jdt()
+augroup end
 
 source $HOME/.config/nvim/lua/general_settings.vim
 source $HOME/.config/nvim/lua/telescope_settings.vim
 
-:lua require('neogit_settings')
-:lua require('nvim_lsp_settings')
-:lua require('omnisharp_settings')
-
-" work-around, lua code is not working
-" let g:coq_settings = { 'auto_start': v:true } - not working piece of shit
+":lua require('omnisharp_settings')

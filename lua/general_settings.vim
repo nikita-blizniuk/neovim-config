@@ -1,6 +1,6 @@
 " color scheme
-set background=light
-colorscheme solarized8
+" set background=light
+" colorscheme solarized8
 
 " tabulation settings
 filetype plugin indent on
